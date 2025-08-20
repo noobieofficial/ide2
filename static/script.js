@@ -1,6 +1,8 @@
 /* costanti */
+const form = document.getElementById("code-form");
 const textarea = document.getElementById("program");
 const numbers = document.getElementById("line-numbers");
+const output = document.getElementById("console-output")
 
 /* textarea + numeri riga */
 function updateLineNumbers() {
@@ -20,6 +22,10 @@ textarea.addEventListener("scroll", function() {
 
 textarea.addEventListener("input", updateLineNumbers);
 updateLineNumbers();
+
+
+
+
 
 /* cambia schermata mobile */
 function showPanel(id) {
@@ -50,4 +56,31 @@ window.onload = () => {
 window.addEventListener('resize', () => {
     const activePanel = document.querySelector('.editor.active') ? 'editor-panel' : 'console-panel';
     showPanel(activePanel);
+});
+
+
+
+
+
+/* aggiungiamo un evento sul submit del form */
+form.addEventListener("submit", async function(event) {
+    event.preventDefault(); /* evita che la pagina si ricarichi */
+
+    /* prendiamo il contenuto della textarea */
+    const code = document.getElementById("program").value;
+
+    /* inviamo il codice al server con una chiamata fetch */
+    const response = await fetch("/print", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({ program: code })
+    });
+
+    /* aspettiamo la risposta e la convertiamo in JSON */
+    const result = await response.json();
+
+    /* mettiamo l'output nella console (nella pagina) */
+    outputArea.textContent = result.output;
 });

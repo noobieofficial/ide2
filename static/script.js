@@ -82,5 +82,8 @@ form.addEventListener("submit", async function(event) {
     const result = await response.json();
 
     /* mettiamo l'output nella console (nella pagina) */
-    outputArea.textContent = result.output;
+    output.textContent = result.output;
+
+    output.classList.add("updated");
+    setTimeout(() => output.classList.remove("updated"), 300);
 });

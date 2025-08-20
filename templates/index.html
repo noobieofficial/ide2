@@ -13,13 +13,16 @@
             <div id="program-box" class="box">
                 <pre id="line-numbers">1</pre>
                 <div id="program-scroller">
-                    <textarea name="program" id="program" placeholder="Codice"></textarea>
+                    <form id="code-form">
+                        <textarea name="program" id="program" placeholder="Codice"></textarea>
+                        <button type="submit">Esegui</button>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="console" id="console-panel">
             <h2>Console</h2>
-            <pre>Qui comparirà l'output...</pre>
+            <pre id="console-output">Qui comparirà l'output...</pre>
         </div>
     </div>
 

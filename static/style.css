@@ -1,9 +1,9 @@
 /* Variabili globali */
 :root {
   --text: #1a1a1a;
+  --background: #f9f9f9;
   --primary-blue: #2c7a8a;
   --primary-orange: #f26b1d;
-  --background: #f9f9f9;
 }
 
 /* Reset */
@@ -14,15 +14,15 @@
 }
 
 body {
-  font-family: sans-serif;
   color: var(--text);
+  font-family: sans-serif;
   background-color: var(--background);
 }
 
 /* Layout principale */
 .container {
-  display: flex;
   height: 100vh;
+  display: flex;
 }
 
 /* Sezioni principali */
@@ -30,8 +30,8 @@ body {
 .console {
   flex: 1;
   padding: 1rem;
-  overflow: auto;
   display: flex;
+  overflow: auto;
   flex-direction: column;
   border-left: 2px solid #ddd;
 }
@@ -41,41 +41,41 @@ body {
 }
 
 .console {
-  background-color: var(--primary-blue);
   color: white;
+  background-color: var(--primary-blue);
 }
 
 .editor h2,
 .console h2 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
   color: var(--primary-orange);
   border-bottom: 2px solid var(--primary-orange);
-  padding-bottom: 0.3rem;
 }
 
 /* Program box */
 #program-box {
   flex: 1;
   display: flex;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #fafafa;
   font-family: monospace;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-  background: #fafafa;
 }
 
 #line-numbers {
   margin: 0;
+  color: #888;
   padding: 0.5rem;
+  min-width: 40px;
+  white-space: pre;
   text-align: right;
   user-select: none;
   background: #f0f0f0;
   line-height: 1.5rem;
-  color: #888;
   border-right: 1px solid #ddd;
-  min-width: 40px;
-  white-space: pre;
 }
 
 #program-scroller {
@@ -90,41 +90,41 @@ body {
   outline: none;
   padding: 0.5rem;
   overflow-y: auto;
+  background: #fff;
+  color: var(--text);
   line-height: 1.5rem;
   font-family: monospace;
   box-sizing: border-box;
-  background: #fff;
-  color: var(--text);
 }
 
 /* Console box */
 .console pre {
   flex: 1;
   padding: 1rem;
-  background: rgba(0,0,0,0.2);
   border-radius: 6px;
-  white-space: pre-wrap;
   word-wrap: break-word;
+  white-space: pre-wrap;
+  background: rgba(0,0,0,0.2);
 }
 
 /* Pulsanti mobile */
 .mobile-btn {
-  position: fixed;
   top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--primary-orange);
-  color: white;
-  border: none;
-  border-radius: 50%;
   width: 45px;
   height: 45px;
-  font-size: 1.3rem;
-  font-weight: bold;
-  cursor: pointer;
+  border: none;
   z-index: 1000;
   display: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  transform: translateY(-50%);
   transition: background 0.2s;
+  background-color: var(--primary-orange);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 .mobile-btn:hover {
@@ -139,6 +139,56 @@ body {
   right: 10px;
 }
 
+#code-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#code-form button {
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  transition: background 0.3s ease;
+  background-color: var(--primary-orange);
+}
+
+#code-form button:hover {
+  background-color: #d95a10;
+}
+
+#program {
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#console-output {
+  padding: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  overflow-y: auto;
+  border-radius: 6px;
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#console-output.updated {
+  animation: flash 0.3s ease-in-out;
+}
+
+/* animazioni */
+@keyframes flash {
+  0% { background-color: rgba(255,255,255,0.2); }
+  100% { background-color: rgba(0,0,0,0.3); }
+}
+
 /* Responsive: Mobile */
 @media (max-width: 768px) {
   .container {
@@ -147,9 +197,9 @@ body {
 
   .editor,
   .console {
-    display: none;
-    height: 100vh;
     border: none;
+    height: 100vh;
+    display: none;
   }
 
   .editor.active,

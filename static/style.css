@@ -1,0 +1,163 @@
+/* Variabili globali */
+:root {
+  --text: #1a1a1a;
+  --primary-blue: #2c7a8a;
+  --primary-orange: #f26b1d;
+  --background: #f9f9f9;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--text);
+  background-color: var(--background);
+}
+
+/* Layout principale */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sezioni principali */
+.editor,
+.console {
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #ddd;
+}
+
+.editor {
+  background-color: #fff;
+}
+
+.console {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.editor h2,
+.console h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-orange);
+  border-bottom: 2px solid var(--primary-orange);
+  padding-bottom: 0.3rem;
+}
+
+/* Program box */
+#program-box {
+  flex: 1;
+  display: flex;
+  font-family: monospace;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+#line-numbers {
+  margin: 0;
+  padding: 0.5rem;
+  text-align: right;
+  user-select: none;
+  background: #f0f0f0;
+  line-height: 1.5rem;
+  color: #888;
+  border-right: 1px solid #ddd;
+  min-width: 40px;
+  white-space: pre;
+}
+
+#program-scroller {
+  flex: 1;
+}
+
+#program {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  overflow-y: auto;
+  line-height: 1.5rem;
+  font-family: monospace;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--text);
+}
+
+/* Console box */
+.console pre {
+  flex: 1;
+  padding: 1rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Pulsanti mobile */
+.mobile-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--primary-orange);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+}
+
+.mobile-btn:hover {
+  background-color: #d95a10;
+}
+
+.mobile-btn-left {
+  left: 10px;
+}
+
+.mobile-btn-right {
+  right: 10px;
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  .container {
+    display: block;
+  }
+
+  .editor,
+  .console {
+    display: none;
+    height: 100vh;
+    border: none;
+  }
+
+  .editor.active,
+  .console.active {
+    display: flex;
+  }
+
+  .mobile-btn {
+    display: block;
+  }
+}

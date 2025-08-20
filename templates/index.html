@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NOOBIE-IDE | HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="editor active" id="editor-panel">
+            <h2>Editor</h2>
+            <div id="program-box" class="box">
+                <pre id="line-numbers">1</pre>
+                <div id="program-scroller">
+                    <textarea name="program" id="program" placeholder="Codice"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="console" id="console-panel">
+            <h2>Console</h2>
+            <pre>Qui comparirà l'output...</pre>
+        </div>
+    </div>
+
+    <button class="mobile-btn mobile-btn-left" id="btn-left" onclick="showPanel('editor-panel')">&lt;</button>
+    <button class="mobile-btn mobile-btn-right" id="btn-right" onclick="showPanel('console-panel')">&gt;</button>
+
+    <script src="{{ url_for('static', filename='script.js')}}"></script>
+</body>
+</html>

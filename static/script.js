@@ -70,7 +70,7 @@ form.addEventListener("submit", async function(event) {
     const code = document.getElementById("program").value;
 
     /* inviamo il codice al server con una chiamata fetch */
-    const response = await fetch("/print", {
+    const response = await fetch("/execute", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -86,4 +86,40 @@ form.addEventListener("submit", async function(event) {
 
     output.classList.add("updated");
     setTimeout(() => output.classList.remove("updated"), 300);
+});
+
+
+
+
+
+/* gestione salva/apri/pulisci */
+document.getElementById('run-btn').addEventListener('click', () => {
+    document.getElementById('code-form').requestSubmit();
+});
+
+document.getElementById('save-btn').addEventListener('click', () => {
+    const code = document.getElementById('program').value;
+    const blob = new Blob([code], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'code.noob';
+    link.click();
+});
+
+document.getElementById("clear-btn").addEventListener('click', () => {
+    output.textContent = "";
+})
+
+document.getElementById('open-file').addEventListener('change', event => {
+    const file = event.target.files[0];
+    if (file && file.name.endsWith('.noob')) {
+        const reader = new FileReader();
+        reader.onload = e => {
+            textarea.value = e.target.result;
+            updateLineNumbers();
+        };
+        reader.readAsText(file);
+    } else {
+        alert("Choose a .noob file");
+    }
 });

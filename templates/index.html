@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NOOBIE-IDE | HOME</title>
+    <title>NOOBIE-IDE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" sizes="16x16" href="{{ url_for('static', filename='logo_originale.png')}}" type="image/png">
 </head>
 <body>
+    <nav class="navbar">
+        <h1 class="logo">NOOBIE IDE &lt;/&gt;</h1>
+        <div class="nav-buttons">
+            <button id="run-btn">Run</button>
+            <button id="clear-btn">Clear</button>
+            <button id="save-btn">Save</button>
+            <label for="open-file" class="file-label">Open</label>
+            <input type="file" id="open-file" accept=".noob" hidden>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="editor active" id="editor-panel">
             <h2>Editor</h2>
@@ -14,15 +26,14 @@
                 <pre id="line-numbers">1</pre>
                 <div id="program-scroller">
                     <form id="code-form">
-                        <textarea name="program" id="program" placeholder="Codice"></textarea>
-                        <button type="submit">Esegui</button>
+                        <textarea name="program" id="program" placeholder="say &quot;Hello World!&quot; end"></textarea>
                     </form>
                 </div>
             </div>
         </div>
         <div class="console" id="console-panel">
             <h2>Console</h2>
-            <pre id="console-output">Qui comparirà l'output...</pre>
+            <pre id="console-output">The output will appear here...</pre>
         </div>
     </div>
 

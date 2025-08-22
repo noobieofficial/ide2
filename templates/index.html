@@ -9,13 +9,15 @@
 </head>
 <body>
     <nav class="navbar">
-        <h1 class="logo">NOOBIE IDE &lt;/&gt;</h1>
+        <img class="logo-img" alt="NOOBIE logo" src="{{ url_for('static', filename='logo_bianco.png' )}}">
+        <!--h1 class="logo"> &lt;/&gt;NOOBIE IDE</h1-->
         <div class="nav-buttons">
             <button id="run-btn">Run</button>
             <button id="clear-btn">Clear</button>
             <button id="save-btn">Save</button>
             <label for="open-file" class="file-label">Open</label>
             <input type="file" id="open-file" accept=".noob" hidden>
+            <a href="https://noobieofficial.github.io/noobie-site" id="site-btn" class="site-btn" target="_blank">Official Website</a>
         </div>
     </nav>
 

@@ -16,7 +16,7 @@
 body {
   color: var(--text);
   font-family: sans-serif;
-  background-color: var(--background);
+  background-color: var(--primary-blue);
 }
 
 /* Layout principale */
@@ -27,7 +27,10 @@ body {
   padding: 0.8rem 1.5rem;
   justify-content: space-between;
   background-color: var(--primary-blue);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo-img {
+  max-width: 50px;
 }
 
 .navbar .logo {
@@ -41,25 +44,31 @@ body {
 }
 
 .nav-buttons button,
-.file-label {
+.file-label,
+.site-btn {
   border: none;
-  color: white;
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 6px;
   padding: 0.6rem 1rem;
-  transition: background 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.site-btn:hover,
+.nav-buttons button,
+.file-label {
+  color: white;
   background-color: var(--primary-orange);
 }
 
+.site-btn,
 .nav-buttons button:hover,
 .file-label:hover {
-  background-color: #d95a10;
-}
-
-.file-label {
-  display: inline-block;
+  color: var(--primary-orange);
+  background-color: white;
 }
 
 .container {
@@ -75,10 +84,11 @@ body {
   display: flex;
   overflow: auto;
   flex-direction: column;
-  border-left: 2px solid #ddd;
+  border-left: 2px solid var(--primary-blue);
 }
 
 .editor {
+  border-radius: 0 20px 0 0;
   background-color: #fff;
 }
 
